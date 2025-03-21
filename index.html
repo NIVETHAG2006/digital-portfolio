@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b); /* Warm gradient background */
+        }
+
+        header {
+            background-color: #3b3b3b; /* Dark grey background */
+            color: #fff;
+            padding: 3rem 4rem;
+            position: relative;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        /* Profile Picture with border and shadow effects */
+        .profile-picture {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff; /* White border */
+            transition: all 0.3s ease;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.1); /* Slight scale effect on hover */
+            box-shadow: 0px 0px 20px rgba(255, 165, 0, 0.8); /* Glowing shadow effect on hover */
+            border: 4px solid #ff7e5f; /* Orange glowing border on hover */
+            transition: all 0.4s ease;
+        }
+
+        .profile-text {
+            margin-left: 20px; /* Space between image and text */
+            transition: all 0.3s ease;
+        }
+
+        .profile-text h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin: 0;
+            transition: color 0.3s ease;
+        }
+
+        .profile-text p {
+            margin: 0;
+            font-size: 1rem;
+            color: #f1c40f; /* Yellow color for the subtitle */
+        }
+
+        .header-content:hover .profile-text h1 {
+            color: #e74c3c; /* Change name color to red on hover */
+        }
+
+        nav {
+            background-color: #2c3e50; /* Darker blue-grey */
+            color: #fff;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #e74c3c; /* Red hover effect */
+        }
+
+        .section-content {
+            background-color: #fff;
+            padding: 2rem;
+            margin: 1rem;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: justify;
+            transition: all 0.3s ease;
+        }
+
+        .section-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .download-button {
+            background-color: #16a085; /* Green button */
+            color: #fff;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 20px;
+            display: inline-block;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #1abc9c; /* Light green hover effect */
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem 0;
+            background-color: #2c3e50; /* Dark grey footer */
+            color: #fff;
+        }
+
+        /* Colorful section headers */
+        h2 {
+            font-size: 2rem;
+            color: #e74c3c; /* Red section headers */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Custom section backgrounds */
+        #about {
+            background: linear-gradient(135deg, #f39c12, #f1c40f); /* Yellow gradient */
+            color: white;
+        }
+
+        #education {
+            background: linear-gradient(135deg, #2980b9, #3498db); /* Blue gradient */
+            color: white;
+        }
+
+        #skills {
+            background: linear-gradient(135deg, #8e44ad, #9b59b6); /* Purple gradient */
+            color: white;
+        }
+
+        #projects {
+            background: linear-gradient(135deg, #e74c3c, #c0392b); /* Red gradient */
+            color: white;
+        }
+
+        #resume {
+            background: linear-gradient(135deg, #16a085, #1abc9c); /* Green gradient */
+            color: white;
+        }
+
+        /* Projects Section with Rounded Borders and Project Details */
+        .project-box {
+            display: inline-block;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.8); /* Pink glow effect around project */
+        }
+
+        .project-box img {
+            border-radius: 15px;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-box h3 {
+            font-size: 1.2rem;
+            color: #e74c3c;
+            margin-top: 10px;
+        }
+
+        /* Skills Section with Rounded Boxes */
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 20px 0;
+        }
+
+        .skill-box {
+            background-color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: #e74c3c;
+            font-size: 1rem;
+            border: 2px solid #e74c3c;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-box:hover {
+            transform: scale(1.05);
+            background-color: #e74c3c;
+            color: #fff;
+        }
+
+        /* Hide the resume image initially */
+        #resume-image {
+            display: none;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <!-- Profile Picture aligned left with border and hover effects -->
+            <img src="profile.jpg" alt="Your Profile Picture" class="profile-picture">
+            <div class="profile-text">
+                <h1>NIVETHA G</h1>
+                <p>Data Science Enthusiast</p>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#resume">Resume</a></li>
+        </ul>
+    </nav>
+
+    <section id="about">
+        <div class="section-content">
+            <h2>About Me</h2>
+            <p>I'm a <b>Data Science Student</b> passionate about turning data into meaningful insights. With a keen interest in website design, I aim to create user-friendly and visually appealing platforms. I believe in blending data-driven decisions with creative web design. My goal is to enhance user experiences through innovative designs. I'm excited to bridge the gap between data science and web design.</p>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="section-content">
+            <h2>Education</h2>
+            <p>Madras University - Bsc.Computer Science With Data Science</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="section-content">
+            <h2>Skills</h2>
+            <div class="skills-list">
+                <div class="skill-box">HTML</div>
+                <div class="skill-box">CSS</div>
+                <div class="skill-box">JavaScript</div>
+                <div class="skill-box">Java</div>
+                <div class="skill-box">Python</div>
+                <div class="skill-box">Adobe Photoshop</div>
+                <div class="skill-box">ML & AI</div>
+                <div class="skill-box">C++</div>
+                <div class="skill-box">MS Office</div>
+                <div class="skill-box">Adobe Pagemaker</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="section-content">
+            <h2>Projects</h2>
+
+            <!-- Project 1 - Basic E-commerce Platform -->
+            <div class="project-box">
+                <img src="cloth_website.jpg" alt="Basic E-commerce Platform">
+                <h3>Basic E-commerce Platform</h3>
+            </div>
+
+            <!-- Project 2 - Netflix Clone -->
+            <div class="project-box">
+                <img src="netflix.png" alt="Netflix Clone">
+                <h3>Netflix Clone</h3>
+            </div>
+
+            <!-- Project 3 - QR Code Generator -->
+            <div class="project-box">
+                <img src="QR_generator.png" alt="QR Code Generator">
+                <h3>QR Code Generator</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume">
+        <div class="section-content">
+            <center>
+                <h2>Resume</h2>
+                <!-- Button to trigger image download and display -->
+                <a href="#" class="download-button" id="download-cv">
+                    Download CV
+                </a>
+
+                <!-- Hidden Resume Image that appears after the button click -->
+                <img id="resume-image" src="resume.jpg" alt="Resume Image">
+            </center>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 NIVETHA G | All rights reserved</p>
+    </footer>
+
+    <script>
+        document.getElementById('download-cv').addEventListener('click', function(event) {
+            // Prevent the default behavior
+            event.preventDefault();
+
+            // Trigger the download of the resume image
+            const link = document.createElement('a');
+            link.href = 'nivetha_resume.jpg';  // Path to your resume file
+            link.download = 'nivetha_resume.jpg'; // Suggested file name for download
+            link.click();
+
+            // Show the resume image after clicking the download button
+            document.getElementById('resume-image').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
